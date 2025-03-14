@@ -53,13 +53,14 @@ const HeaderMobile = ({ isHomePage, renderSearchBar }: Props) => {
       >
         {/* <Burger/> */}
         {/* <NetworkLogo imageProps={ LOGO_IMAGE_PROPS }/> */}
-        <Image
+        {/* <Image
          width="64"
          height="64"
         src="https://i.imgur.com/IydFG3Y.png"
         alt={ `${ config.chain.name } network logo` }
         
-      />
+      /> */}
+      <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='https://i.imgur.com/IydFG3Y.png'  />
         <Flex columnGap={ 2 }>
           { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
           { config.features.blockchainInteraction.isEnabled && <WalletMenuMobile/> }
