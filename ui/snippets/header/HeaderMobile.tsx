@@ -1,4 +1,4 @@
-import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Link, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -60,7 +60,10 @@ const HeaderMobile = ({ isHomePage, renderSearchBar }: Props) => {
         alt={ `${ config.chain.name } network logo` }
         
       /> */}
-      <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='https://i.imgur.com/IydFG3Y.png'  />
+       <Link href="/" >
+       <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='/static/white-dhive.svg'  />
+
+    </Link>
         <Flex columnGap={ 2 }>
           { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
           { config.features.blockchainInteraction.isEnabled && <WalletMenuMobile/> }
