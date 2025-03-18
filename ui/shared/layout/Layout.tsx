@@ -15,7 +15,7 @@ const LayoutDefault = ({ children }: Props) => {
       <Layout.TopRow/>
       <HeaderMobile/>
       <Layout.MainArea>
-        <Layout.SideBar/>
+        {/* <Layout.SideBar/> */}
         <Layout.MainColumn>
           <HeaderAlert/>
           <HeaderDesktop/>
