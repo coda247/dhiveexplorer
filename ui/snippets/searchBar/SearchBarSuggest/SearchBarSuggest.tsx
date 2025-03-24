@@ -25,6 +25,8 @@ interface Props {
 }
 
 const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props) => {
+  console.log("searchTerm", searchTerm);
+  console.log("query", query.data);
   const isMobile = useIsMobile();
 
   const marketplaceApps = useMarketplaceApps(searchTerm);
@@ -121,17 +123,17 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
       <>
         { resultCategories.length > 1 && (
           <Box position="sticky" top="0" width="100%" background={ bgColor } py={ 5 } my={ -5 } ref={ tabsRef }>
-            <Tabs variant="outline" colorScheme="gray" size="sm" index={ tabIndex }>
+            {/* <Tabs variant="outline" colorScheme="gray" size="sm" index={ tabIndex }>
               <TabList columnGap={ 3 } rowGap={ 2 } flexWrap="wrap">
                 { resultCategories.map((cat, index) => <Tab key={ cat.id } onClick={ scrollToCategory(index) }>{ cat.title }</Tab>) }
               </TabList>
-            </Tabs>
+            </Tabs> */}
           </Box>
         ) }
         { resultCategories.map((cat, indx) => {
           return (
             <Element name={ `cat_${ indx }` } key={ cat.id }>
-              <Text
+              {/* <Text
                 fontSize="sm"
                 fontWeight={ 600 }
                 variant="secondary"
@@ -140,7 +142,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
                 ref={ (el: HTMLParagraphElement) => categoriesRefs.current[indx] = el }
               >
                 { cat.title }
-              </Text>
+              </Text> */}
               { cat.id !== 'app' && itemsGroups[cat.id]?.map((item, index) =>
                 <SearchBarSuggestItem key={ index } data={ item } isMobile={ isMobile } searchTerm={ searchTerm } onClick={ onItemClick }/>,
               ) }
