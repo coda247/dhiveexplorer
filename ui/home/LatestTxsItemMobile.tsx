@@ -41,18 +41,18 @@ const LatestTxsItem = ({ tx, isLoading }: Props) => {
     >
       <Flex justifyContent="space-between">
         <HStack flexWrap="wrap">
-          <TxType types={ tx.tx_types } isLoading={ isLoading }/>
+          {/* <TxType types={ tx.tx_types } isLoading={ isLoading }/> */}
           <TxStatus status={ tx.status } errorText={ tx.status === 'error' ? tx.result : undefined } isLoading={ isLoading }/>
-          <TxWatchListTags tx={ tx } isLoading={ isLoading }/>
+          {/* <TxWatchListTags tx={ tx } isLoading={ isLoading }/> */}
         </HStack>
-        <TxAdditionalInfo tx={ tx } isMobile isLoading={ isLoading }/>
+        {/* <TxAdditionalInfo tx={ tx } isMobile isLoading={ isLoading }/> */}
       </Flex>
       <Flex
         mt={ 2 }
         alignItems="center"
         width="100%"
         justifyContent="space-between"
-        mb={ 6 }
+        mb={ 2 }
       >
         <TxEntity
           isLoading={ isLoading }
@@ -66,14 +66,14 @@ const LatestTxsItem = ({ tx, isLoading }: Props) => {
           </Skeleton>
         ) }
       </Flex>
-      <AddressFromTo
+      {/* <AddressFromTo
         from={ tx.from }
         to={ dataTo }
         isLoading={ isLoading }
         fontSize="sm"
         fontWeight="500"
         mb={ 3 }
-      />
+      /> */}
       { !config.UI.views.tx.hiddenFields?.value && (
         <Skeleton isLoaded={ !isLoading } mb={ 2 } fontSize="sm" w="fit-content">
           <Text as="span">Value { currencyUnits.ether } </Text>
