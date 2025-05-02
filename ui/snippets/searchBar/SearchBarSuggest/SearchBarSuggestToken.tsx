@@ -48,36 +48,34 @@ const SearchBarSuggestToken = ({ data, isMobile, searchTerm }: Props) => {
 
     return (
       <>
-        {/* <Flex alignItems="center">
+        <Flex alignItems="center">
           { icon }
           { name }
           { data.is_verified_via_admin_panel && verifiedIcon }
-        </Flex> */}
-        {/* overflow="hidden" */}
+        </Flex>
         <Grid templateColumns={ templateCols } alignItems="center" gap={ 2 }>
-          <Flex alignItems="center">
+          <Flex alignItems="center" overflow="hidden">
             { address }
-            {/* { contractVerifiedIcon } */}
+            { contractVerifiedIcon }
           </Flex>
-          {/* { additionalInfo } */}
+          { additionalInfo }
         </Grid>
       </>
     );
   }
 
   return (
-    <Grid >
-      {/* <Flex alignItems="center">
+    <Grid templateColumns="228px 1fr auto" gap={ 2 }>
+      <Flex alignItems="center">
         { icon }
         { name }
         { data.is_verified_via_admin_panel && verifiedIcon }
-      </Flex> */}
-      {/* overflow="hidden" */}
-      <Flex alignItems="center" >
-        { address }
-        {/* { contractVerifiedIcon } */}
       </Flex>
-      {/* { additionalInfo } */}
+      <Flex alignItems="center" overflow="hidden">
+        { address }
+        { contractVerifiedIcon }
+      </Flex>
+      { additionalInfo }
     </Grid>
   );
 };

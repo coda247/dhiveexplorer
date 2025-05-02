@@ -109,8 +109,8 @@ const Footer = () => {
         mb={{ base: 5, lg: 10 }}
         _empty={{ display: 'none' }}
       >
-        {/* { !config.UI.indexingAlert.intTxs.isHidden && <IntTxsIndexingStatus/> } */}
-        {/* <NetworkAddToWallet/> */}
+        { !config.UI.indexingAlert.intTxs.isHidden && <IntTxsIndexingStatus/> }
+        <NetworkAddToWallet/>
       </Flex>
     );
   }, []);
@@ -118,7 +118,7 @@ const Footer = () => {
   const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
     return (
       <Box gridArea={ gridArea }>
-       {/* <Link fontSize="xs" href="https://www.egoscan.io">Egoscan.io</Link> */}
+        {/* <Link fontSize="xs" href="https://www.scan.dhive.com">Dhive</Link> */}
 
         { /* <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (

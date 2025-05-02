@@ -17,7 +17,7 @@ const TxDetails = ({ txQuery }: Props) => {
 
   return (
     <>
-      {/* <TestnetWarning mb={ 6 } isLoading={ txQuery.isPlaceholderData }/> */}
+      <TestnetWarning mb={ 6 } isLoading={ txQuery.isPlaceholderData }/>
       <TxInfo data={ txQuery.data } isLoading={ txQuery.isPlaceholderData } socketStatus={ txQuery.socketStatus }/>
     </>
   );

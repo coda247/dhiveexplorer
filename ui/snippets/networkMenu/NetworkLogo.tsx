@@ -1,92 +1,77 @@
-import type { StyleProps } from '@chakra-ui/react';
-import { Box, Image, useColorModeValue, Skeleton } from '@chakra-ui/react';
+import { Box, Flex, Link, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
-
-import { route } from 'nextjs-routes';
+import { useInView } from 'react-intersection-observer';
 
 import config from 'configs/app';
-import IconSvg from 'ui/shared/IconSvg';
+import { useScrollDirection } from 'lib/contexts/scrollDirection';
+import NetworkLogo from 'ui/snippets/networkMenu/NetworkLogo';
+import ProfileMenuMobile from 'ui/snippets/profileMenu/ProfileMenuMobile';
+import SearchBar from 'ui/snippets/searchBar/SearchBar';
+import WalletMenuMobile from 'ui/snippets/walletMenu/WalletMenuMobile';
 
-interface Props {
-  isCollapsed?: boolean;
-  onClick?: (event: React.SyntheticEvent) => void;
-  imageProps?: StyleProps;
-}
+import Burger from './Burger';
+import Image from 'next/image';
 
-const LogoFallback = ({ isCollapsed, isSmall, imageProps }: { isCollapsed?: boolean; isSmall?: boolean; imageProps?: StyleProps }) => {
-  const field = isSmall ? 'icon' : 'logo';
-  const logoColor = useColorModeValue('blue.600', 'white');
-
-  const display = isSmall ? {
-    base: 'none',
-    lg: isCollapsed === false ? 'none' : 'block',
-    xl: isCollapsed ? 'block' : 'none',
-  } : {
-    base: 'block',
-    lg: isCollapsed === false ? 'block' : 'none',
-    xl: isCollapsed ? 'none' : 'block',
-  };
-
-  if (config.UI.sidebar[field].default) {
-    return <Skeleton w="100%" borderRadius="sm" display={ display }/>;
-  }
-
-  return (
-    <IconSvg
-      name={ isSmall ? 'networks/icon-placeholder' : 'networks/logo-placeholder' }
-      width="auto"
-      height="100%"
-      color={ logoColor }
-      display={ display }
-      { ...imageProps }
-    />
-  );
+const LOGO_IMAGE_PROPS = {
+  margin: '0 auto',
 };
 
-const NetworkLogo = ({ isCollapsed, onClick, imageProps }: Props) => {
+type Props = {
+  isHomePage?: boolean;
+  renderSearchBar?: () => React.ReactNode;
+}
 
-  const logoSrc = useColorModeValue(config.UI.sidebar.logo.default, config.UI.sidebar.logo.dark || config.UI.sidebar.logo.default);
-  const iconSrc = useColorModeValue(config.UI.sidebar.icon.default, config.UI.sidebar.icon.dark || config.UI.sidebar.icon.default);
-  const darkModeFilter = { filter: 'brightness(0) invert(1)' };
-  const logoStyle = useColorModeValue({}, !config.UI.sidebar.logo.dark ? darkModeFilter : {});
-  const iconStyle = useColorModeValue({}, !config.UI.sidebar.icon.dark ? darkModeFilter : {});
+const HeaderMobile = ({ isHomePage, renderSearchBar }: Props) => {
+  const bgColor = useColorModeValue('white', 'black');
+  const scrollDirection = useScrollDirection();
+  const { ref, inView } = useInView({ threshold: 1 });
+
+  const searchBar = renderSearchBar ? renderSearchBar() : <SearchBar/>;
 
   return (
     <Box
-      as="a"
-      href={ route({ pathname: '/' }) }
-      width={{ base: '120px', lg: isCollapsed === false ? '120px' : '30px', xl: isCollapsed ? '30px' : '120px' }}
-      height={{ base: '24px', lg: isCollapsed === false ? '24px' : '30px', xl: isCollapsed ? '30px' : '24px' }}
-      display="inline-flex"
-      overflow="hidden"
-      onClick={ onClick }
-      flexShrink={ 0 }
-      aria-label="Link to main page"
+      ref={ ref }
+      bgColor={ bgColor }
+      // display={{ base: 'block', lg: 'none' }}
+      position="sticky"
+      top="-1px"
+      left={ 0 }
+      zIndex="sticky2"
+      pt="1px"
     >
-      { /* big logo */ }
-      <Image
-        w="auto"
-        h="100%"
-        src={ logoSrc }
+      <Flex
+        as="header"
+        paddingX={ 4 }
+        paddingY={ 2 }
+        bgColor={ bgColor }
+        width="100%"
+        alignItems="center"
+        justifyContent="space-between"
+        transitionProperty="box-shadow"
+        transitionDuration="slow"
+        boxShadow={ !inView && scrollDirection === 'down' ? 'md' : 'none' }
+      >
+        {/* <Burger/> */}
+        {/* <NetworkLogo imageProps={ LOGO_IMAGE_PROPS }/> */}
+        {/* <Image
+         width="64"
+         height="64"
+        src="https://i.imgur.com/IydFG3Y.png"
         alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback isCollapsed={ isCollapsed } imageProps={ imageProps }/> }
-        display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
-        style={ logoStyle }
-        { ...imageProps }
-      />
-      { /* small logo */ }
-      <Image
-        w="auto"
-        h="100%"
-        src={ iconSrc }
-        alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback isCollapsed={ isCollapsed } imageProps={ imageProps } isSmall/> }
-        display={{ base: 'none', lg: isCollapsed === false ? 'none' : 'block', xl: isCollapsed ? 'block' : 'none' }}
-        style={ iconStyle }
-        { ...imageProps }
-      />
+        
+      /> */}
+       <Link href="/" >
+       <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='/static/white-dhive.svg'  />
+
+    </Link>
+        <Flex columnGap={ 2 }>
+          { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
+          { config.features.blockchainInteraction.isEnabled && <WalletMenuMobile/> }
+        </Flex>
+      </Flex>
+      {/* { !isHomePage && searchBar } */}
     </Box>
   );
 };
 
-export default React.memo(NetworkLogo);
+export default React.memo(HeaderMobile);

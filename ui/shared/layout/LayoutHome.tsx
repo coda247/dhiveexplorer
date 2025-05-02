@@ -14,11 +14,11 @@ const LayoutHome = ({ children }: Props) => {
       <Layout.TopRow/>
       <HeaderMobile isHomePage/>
       <Layout.MainArea>
-        {/* <Layout.SideBar/> */}
+        <Layout.SideBar/>
         <Layout.MainColumn
           paddingTop={{ base: 3, lg: 6 }}
         >
-          {/* <HeaderAlert/> */}
+          <HeaderAlert/>
           <AppErrorBoundary>
             { children }
           </AppErrorBoundary>

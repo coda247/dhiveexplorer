@@ -17,6 +17,7 @@ const rollupFeature = config.features.rollup;
 const Home = () => {
   return (
     <Box as="main">
+       <SearchBar isHomepage/>
       {/* <Box
         w="100%"
         background={ config.UI.homepage.plate.background }
@@ -42,16 +43,14 @@ const Home = () => {
         </Flex>
         <SearchBar isHomepage/>
       </Box> */}
-      {/* <Stats/> */}
-      {/* <ChainIndicators/> */}
-      <SearchBar isHomepage={true} />
+      <Stats/>
+      <ChainIndicators/>
       <AdBanner mt={{ base: 6, lg: 8 }} mx="auto" display="flex" justifyContent="center"/>
       <Flex mt={ 8 } direction={{ base: 'column', lg: 'row' }} columnGap={ 12 } rowGap={ 8 }>
-        
+        { rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? <LatestZkEvmL2Batches/> : <LatestBlocks/> }
         <Box flexGrow={ 1 }>
           <Transactions/>
         </Box>
-        { rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? <LatestZkEvmL2Batches/> : <LatestBlocks/> }
       </Flex>
     </Box>
   );

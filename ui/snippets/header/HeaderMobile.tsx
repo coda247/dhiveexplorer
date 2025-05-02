@@ -1,4 +1,4 @@
-import { Box, Flex, Link, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -10,7 +10,6 @@ import SearchBar from 'ui/snippets/searchBar/SearchBar';
 import WalletMenuMobile from 'ui/snippets/walletMenu/WalletMenuMobile';
 
 import Burger from './Burger';
-import Image from 'next/image';
 
 const LOGO_IMAGE_PROPS = {
   margin: '0 auto',
@@ -32,7 +31,7 @@ const HeaderMobile = ({ isHomePage, renderSearchBar }: Props) => {
     <Box
       ref={ ref }
       bgColor={ bgColor }
-      // display={{ base: 'block', lg: 'none' }}
+      display={{ base: 'block', lg: 'none' }}
       position="sticky"
       top="-1px"
       left={ 0 }
@@ -51,19 +50,8 @@ const HeaderMobile = ({ isHomePage, renderSearchBar }: Props) => {
         transitionDuration="slow"
         boxShadow={ !inView && scrollDirection === 'down' ? 'md' : 'none' }
       >
-        {/* <Burger/> */}
-        {/* <NetworkLogo imageProps={ LOGO_IMAGE_PROPS }/> */}
-        {/* <Image
-         width="64"
-         height="64"
-        src="https://i.imgur.com/IydFG3Y.png"
-        alt={ `${ config.chain.name } network logo` }
-        
-      /> */}
-       <Link href="/" >
-       <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='/static/white-dhive.svg'  />
-
-    </Link>
+        <Burger/>
+        <NetworkLogo imageProps={ LOGO_IMAGE_PROPS }/>
         <Flex columnGap={ 2 }>
           { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
           { config.features.blockchainInteraction.isEnabled && <WalletMenuMobile/> }

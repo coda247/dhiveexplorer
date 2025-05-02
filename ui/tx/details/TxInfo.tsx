@@ -113,7 +113,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
           <TxSocketAlert status={ socketStatus }/>
         </GridItem>
       ) }
-      {/* <DetailsInfoItem
+      <DetailsInfoItem
         title="Transaction hash"
         hint="Unique character string (TxID) assigned to every verified transaction"
         flexWrap="nowrap"
@@ -124,7 +124,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
           <HashStringShortenDynamic hash={ data.hash }/>
         </Skeleton>
         <CopyToClipboard text={ data.hash } isLoading={ isLoading }/>
-      </DetailsInfoItem> */}
+      </DetailsInfoItem>
       <DetailsInfoItem
         title={ rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? 'L2 status and method' : 'Status and method' }
         hint="Current transaction state: Success, Failed (Error), or Pending (In Process)"
@@ -247,7 +247,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
 
       <TxDetailsActions hash={ data.hash } actions={ data.actions } isTxDataLoading={ isLoading }/>
 
-      {/* <DetailsInfoItem
+      <DetailsInfoItem
         title="From"
         hint="Address (external or contract) sending the transaction"
         isLoading={ isLoading }
@@ -263,8 +263,8 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
             { addressFromTags }
           </Flex>
         ) }
-      </DetailsInfoItem> */}
-      {/* <DetailsInfoItem
+      </DetailsInfoItem>
+      <DetailsInfoItem
         title={ data.to?.is_contract ? 'Interacted with contract' : 'To' }
         hint="Address (external or contract) receiving the transaction"
         isLoading={ isLoading }
@@ -304,10 +304,10 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
         ) : (
           <span>[ Contract creation ]</span>
         ) }
-      </DetailsInfoItem> */}
-      {/* { data.token_transfers && <TxDetailsTokenTransfers data={ data.token_transfers } txHash={ data.hash } isOverflow={ data.token_transfers_overflow }/> } */}
+      </DetailsInfoItem>
+      { data.token_transfers && <TxDetailsTokenTransfers data={ data.token_transfers } txHash={ data.hash } isOverflow={ data.token_transfers_overflow }/> }
 
-      {/* <DetailsInfoItemDivider/> */}
+      <DetailsInfoItemDivider/>
 
       { data.zkevm_sequence_hash && (
         <DetailsInfoItem
@@ -487,7 +487,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
       <GridItem colSpan={{ base: undefined, lg: 2 }}>
         <Element name="TxInfo__cutLink">
           <Skeleton isLoaded={ !isLoading } mt={ 6 } display="inline-block">
-            {/* <Link
+            <Link
               display="inline-block"
               fontSize="sm"
               textDecorationLine="underline"
@@ -495,7 +495,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
               onClick={ handleCutClick }
             >
               { isExpanded ? 'Hide details' : 'View details' }
-            </Link> */}
+            </Link>
           </Skeleton>
         </Element>
       </GridItem>

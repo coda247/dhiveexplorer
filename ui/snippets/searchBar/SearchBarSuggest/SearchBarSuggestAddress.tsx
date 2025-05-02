@@ -56,7 +56,7 @@ const SearchBarSuggestAddress = ({ data, isMobile, searchTerm }: Props) => {
     return (
       <>
         <Flex alignItems="center">
-          {/* { icon } */}
+          { icon }
           <Box
             as={ shouldHighlightHash ? 'mark' : 'span' }
             display="block"
@@ -67,7 +67,7 @@ const SearchBarSuggestAddress = ({ data, isMobile, searchTerm }: Props) => {
             { addressEl }
           </Box>
         </Flex>
-        {/* { nameEl } */}
+        { nameEl }
       </>
     );
   }
@@ -75,7 +75,7 @@ const SearchBarSuggestAddress = ({ data, isMobile, searchTerm }: Props) => {
   return (
     <Flex alignItems="center">
       <Flex alignItems="center" w="450px" mr={ 2 }>
-        {/* { icon } */}
+        { icon }
         <Box
           as={ shouldHighlightHash ? 'mark' : 'span' }
           display="block"
@@ -86,7 +86,7 @@ const SearchBarSuggestAddress = ({ data, isMobile, searchTerm }: Props) => {
           { addressEl }
         </Box>
       </Flex>
-      {/* { nameEl } */}
+      { nameEl }
     </Flex>
   );
 };

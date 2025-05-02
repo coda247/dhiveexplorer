@@ -62,7 +62,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
       </Td>
       <Td>
         <VStack alignItems="start">
-          {/* <TxType types={ tx.tx_types } isLoading={ isLoading }/> */}
+          <TxType types={ tx.tx_types } isLoading={ isLoading }/>
           <TxStatus status={ tx.status } errorText={ tx.status === 'error' ? tx.result : undefined } isLoading={ isLoading }/>
           <TxWatchListTags tx={ tx } isLoading={ isLoading }/>
         </VStack>
@@ -88,7 +88,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
           ) }
         </Td>
       ) }
-      {/* <Td>
+      <Td>
         <AddressFromTo
           from={ tx.from }
           to={ dataTo }
@@ -97,7 +97,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
           mt="2px"
           mode="compact"
         />
-      </Td> */}
+      </Td>
       { !config.UI.views.tx.hiddenFields?.value && (
         <Td isNumeric>
           <CurrencyValue value={ tx.value } accuracy={ 8 } isLoading={ isLoading }/>
