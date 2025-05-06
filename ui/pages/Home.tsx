@@ -43,9 +43,13 @@ const Home = () => {
         </Flex>
         <SearchBar isHomepage/>
       </Box> */}
-      <Stats/>
-      <ChainIndicators/>
-      <AdBanner mt={{ base: 6, lg: 8 }} mx="auto" display="flex" justifyContent="center"/>
+      {/* <Stats/>
+      <ChainIndicators/> */}
+      <Flex flexDir={{ base: 'column', lg: 'row' }} columnGap={ 2 } rowGap={ 1 } mt={ 3 } _empty={{ mt: 0 }}>
+        <Stats/>
+        <ChainIndicators/>
+      </Flex>
+      {/* <AdBanner mt={{ base: 6, lg: 8 }} mx="auto" display="flex" justifyContent="center"/> */}
       <Flex mt={ 8 } direction={{ base: 'column', lg: 'row' }} columnGap={ 12 } rowGap={ 8 }>
         { rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? <LatestZkEvmL2Batches/> : <LatestBlocks/> }
         <Box flexGrow={ 1 }>

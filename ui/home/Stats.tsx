@@ -113,7 +113,8 @@ const Stats = () => {
             icon="gas"
             title="Gas tracker"
             value={ gasPriceText }
-            _last={ isOdd ? lastItemTouchStyle : undefined }
+            // _last={ isOdd ? lastItemTouchStyle : undefined }
+           _last={lastItemTouchStyle }
             tooltipLabel={ gasLabel }
             isLoading={ isPlaceholderData }
           />
@@ -132,16 +133,32 @@ const Stats = () => {
   }
 
   return (
-    <Grid
-      gridTemplateColumns={{ lg: `repeat(${ itemsCount }, 1fr)`, base: '1fr 1fr' }}
-      gridTemplateRows={{ lg: 'none', base: undefined }}
-      gridGap="10px"
-      marginTop="24px"
-    >
+<Grid
+gridTemplateColumns="1fr 1fr"
+gridGap={{ base: 1, lg: 2 }}
+flexBasis="50%"
+flexGrow={ 1 }
+>
       { content }
     </Grid>
 
   );
 };
+
+{/* <Grid
+gridTemplateColumns="1fr 1fr"
+gridGap={{ base: 1, lg: 2 }}
+flexBasis="50%"
+flexGrow={ 1 }
+>
+{ items.map((item, index) => (
+  <StatsWidget
+    key={ item.id }
+    { ...item }
+    isLoading={ isLoading }
+    _last={ items.length % 2 === 1 && index === items.length - 1 ? { gridColumn: 'span 2' } : undefined }/>
+),
+) }
+</Grid> */}
 
 export default Stats;
