@@ -21,7 +21,7 @@ const currentChain: Chain = {
   },
   blockExplorers: {
     'default': {
-      name: 'Egochain',
+      name: '',
       url: config.app.baseUrl,
     },
   },
