@@ -66,7 +66,7 @@ const NetworkLogo = ({ isCollapsed, onClick, imageProps }: Props) => {
     >
     
     <Link href="/" >
-       <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='/static/white-dhive.svg'  />
+       <img  alt={ `${ config.chain.name } network logo` } loading="lazy" width="64" height="64" src='/static/cube-logo.png'  />
 
     </Link>
     </Box>

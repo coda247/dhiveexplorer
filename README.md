@@ -1,1 +1,1 @@
-<h1 align="center">Dhive Scan</h1>
+<h1 align="center">Cube Scan</h1>
